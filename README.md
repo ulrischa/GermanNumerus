@@ -1,6 +1,7 @@
 # GermanNumerus
-Inflect plural and singular of nouns in German Language
-Port from https://www.clips.uantwerpen.be/pages/pattern
+Inflect plural and singular of nouns in German Language.
+
+PHP Port from Python: https://www.clips.uantwerpen.be/pages/pattern
 ## Usage
 See example.php
 ### Include
