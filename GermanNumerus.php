@@ -1,5 +1,4 @@
 <?php
-
 namespace ulrischa;
 
 // Multibyte-Encoding
@@ -22,13 +21,13 @@ mb_internal_encoding("UTF-8");
 class Helper
 {
     
-/**
- * Checks if String starts with another String
- *
- * @param string $haystack
- * @param string $needle
- * @return bool
- */
+   /**
+    * Checks if String starts with another String
+    *
+    * @param string $haystack
+    * @param string $needle
+    * @return bool
+    */
     public static function startsWith($haystack, $needle)
     {
         $length = mb_strlen($needle);
