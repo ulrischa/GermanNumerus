@@ -1,7 +1,7 @@
 # GermanNumerus
 Inflect plural and singular of nouns in German Language.
 
-PHP Port of https://github.com/clips/pattern/blob/master/pattern/text/de/inflect.py
+PHP Port of pluralize and singularize part from https://github.com/clips/pattern/blob/master/pattern/text/de/inflect.py
 ## Usage
 See example.php
 ### Include
