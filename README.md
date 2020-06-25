@@ -5,6 +5,7 @@ Port from https://www.clips.uantwerpen.be/pages/pattern
 See example.php
 ### Include
 require_once('GermanNumerus.php');
+
 use \ulrischa\GermanNumerus;
 ### Generate plural for German word
 echo GermanNumerus::pluralize("Kopf");
