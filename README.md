@@ -1,7 +1,7 @@
 # GermanNumerus
 Inflect plural and singular of nouns in German Language.
 
-PHP Port from Python: https://www.clips.uantwerpen.be/pages/pattern
+PHP Port of https://github.com/clips/pattern/blob/master/pattern/text/de/inflect.py
 ## Usage
 See example.php
 ### Include
@@ -12,3 +12,4 @@ use \ulrischa\GermanNumerus;
 echo GermanNumerus::pluralize("Kopf");
 ### Generate singular for german word
 echo  GermanNumerus::singularize("Bodenverunreinigungen");
+
