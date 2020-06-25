@@ -28,7 +28,7 @@ class Helper
     * @param string $needle
     * @return bool
     */
-    public static function startsWith($haystack, $needle)
+    public static function start_with($haystack, $needle)
     {
         $length = mb_strlen($needle);
         return (mb_substr($haystack, 0, $length) === $needle);
@@ -41,7 +41,7 @@ class Helper
      * @param string $needle
      * @return bool
      */
-    public static function endsWith($haystack, $needle)
+    public static function ends_with($haystack, $needle)
     {
         $length = mb_strlen($needle);
         if ($length == 0) {
@@ -86,6 +86,11 @@ class Helper
 * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 * POSSIBILITY OF SUCH DAMAGE.
+* 
+* Accuracy (measured on CELEX German morphology word forms):
+* 75% for gender()
+* 72% for pluralize()
+* 84% for singularize() (for nominative)
 *
 * @author ulrischa <uli@ulrischa.de>
 *
@@ -208,50 +213,50 @@ class GermanNumerus
         }
 
         foreach (self::$plural_inflections as $s => $p) {
-            if (Helper::endsWith($w, $s) === true) {
+            if (Helper::ends_with($w, $s) === true) {
                 return mb_ucfirst(preg_replace('/'.$s.'$/u', '', $w).$p);
             }
         }
 
         // Default rules (baseline = 69%).
-        if (Helper::endsWith($w, "ge") === true) {
+        if (Helper::ends_with($w, "ge") === true) {
             return mb_ucfirst($w);
         }
-        if (Helper::endsWith($w, "gie") === true) {
+        if (Helper::ends_with($w, "gie") === true) {
             return mb_ucfirst($w);
         }
-        if (Helper::endsWith($w, "e") === true) {
+        if (Helper::ends_with($w, "e") === true) {
             return mb_ucfirst($w)."n";
         }
-        if (Helper::endsWith($w, "ien") === true) {
+        if (Helper::ends_with($w, "ien") === true) {
             return preg_replace('/ien$/u', '', $w)."um";
         }
-        if (Helper::endsWith($w, "au") === true || Helper::endsWith($w, "sein") === true || Helper::endsWith($w, "eit") === true || Helper::endsWith($w, "er") === true || Helper::endsWith($w, "en") === true || Helper::endsWith($w, "el") === true || Helper::endsWith($w, "chen") === true || Helper::endsWith($w, "mus") === true || Helper::endsWith($w, "tät") === true || Helper::endsWith($w, "tik") === true || Helper::endsWith($w, "tum") === true || Helper::endsWith($w, "u") === true) {
+        if (Helper::ends_with($w, "au") === true || Helper::ends_with($w, "sein") === true || Helper::ends_with($w, "eit") === true || Helper::ends_with($w, "er") === true || Helper::ends_with($w, "en") === true || Helper::ends_with($w, "el") === true || Helper::ends_with($w, "chen") === true || Helper::ends_with($w, "mus") === true || Helper::ends_with($w, "tät") === true || Helper::ends_with($w, "tik") === true || Helper::ends_with($w, "tum") === true || Helper::ends_with($w, "u") === true) {
             return mb_ucfirst($w);
         }
-        if (Helper::endsWith($w, "ant") === true || Helper::endsWith($w, "ei") === true || Helper::endsWith($w, "enz") === true || Helper::endsWith($w, "ion") === true || Helper::endsWith($w, "ist") === true || Helper::endsWith($w, "or") === true || Helper::endsWith($w, "schaft") === true || Helper::endsWith($w, "tur") === true || Helper::endsWith($w, "ung") === true) {
+        if (Helper::ends_with($w, "ant") === true || Helper::ends_with($w, "ei") === true || Helper::ends_with($w, "enz") === true || Helper::ends_with($w, "ion") === true || Helper::ends_with($w, "ist") === true || Helper::ends_with($w, "or") === true || Helper::ends_with($w, "schaft") === true || Helper::ends_with($w, "tur") === true || Helper::ends_with($w, "ung") === true) {
             return mb_ucfirst($w)."en";
         }
-        if (Helper::endsWith($w, "ein") === true) {
+        if (Helper::ends_with($w, "ein") === true) {
             return mb_ucfirst($w)."e";
         }
-        if (Helper::endsWith($w, "in") === true) {
+        if (Helper::ends_with($w, "in") === true) {
             return mb_ucfirst($w)."nen";
         }
-        if (Helper::endsWith($w, "nis") === true) {
+        if (Helper::ends_with($w, "nis") === true) {
             return mb_ucfirst($w)."se";
         }
-        if (Helper::endsWith($w, "eld") === true || Helper::endsWith($w, "ild") === true || Helper::endsWith($w, "ind") === true) {
+        if (Helper::ends_with($w, "eld") === true || Helper::ends_with($w, "ild") === true || Helper::ends_with($w, "ind") === true) {
             return mb_ucfirst($w)."er";
         }
-        if (Helper::endsWith($w, "o") === true) {
+        if (Helper::ends_with($w, "o") === true) {
             return mb_ucfirst($w)."s";
         }
-        if (Helper::endsWith($w, "a") === true) {
+        if (Helper::ends_with($w, "a") === true) {
             return mb_ucfirst(preg_replace('/a$/u', '', $w)."en");
         }
         # Inflect common umlaut vowels: Kopf => Köpfe.
-        if (Helper::endsWith($w, "all") === true || Helper::endsWith($w, "and") === true || Helper::endsWith($w, "ang") === true || Helper::endsWith($w, "ank") === true || Helper::endsWith($w, "atz") === true || Helper::endsWith($w, "auf") === true || Helper::endsWith($w, "ock") === true || Helper::endsWith($w, "opf") === true || Helper::endsWith($w, "uch") === true || Helper::endsWith($w, "uss") === true) {
+        if (Helper::ends_with($w, "all") === true || Helper::ends_with($w, "and") === true || Helper::ends_with($w, "ang") === true || Helper::ends_with($w, "ank") === true || Helper::ends_with($w, "atz") === true || Helper::ends_with($w, "auf") === true || Helper::ends_with($w, "ock") === true || Helper::ends_with($w, "opf") === true || Helper::ends_with($w, "uch") === true || Helper::ends_with($w, "uss") === true) {
             $umlaut = mb_substr($w, -3, 1);
             $umlaut = str_replace("a", "ä", $umlaut);
             $umlaut = str_replace("o", "ö", $umlaut);
@@ -259,7 +264,7 @@ class GermanNumerus
             return mb_ucfirst(mb_substr($w, 0, -3).$umlaut.mb_substr($w, -2)."e");
         }
         foreach (array("ag" => "äge", "ann" => "änner", "aum" => "äume", "aus" => "äuser", "zug" => "züge") as $s => $p) {
-            if (Helper::endsWith($w, $s) === true) {
+            if (Helper::ends_with($w, $s) === true) {
                 return mb_ucfirst(preg_replace('/'.$s.'$/u', '', $w).$p);
             }
         }
@@ -273,7 +278,7 @@ class GermanNumerus
      * @param string $noun
      * @return string
      */
-    public function singularize($noun)
+    public static function singularize($noun)
     {
         $w = mb_strtolower($noun);
         
@@ -285,20 +290,47 @@ class GermanNumerus
         }
         
         foreach (self::$singular_inflections as $p => $s) {
-            if (Helper::endsWith($w, $p) === true) {
+            if (Helper::ends_with($w, $p) === true) {
                 return mb_ucfirst(preg_replace('/'.$p.'$/u', '', $w).$s);
             }
         }
         
         foreach (array("nen", "en", "n", "e", "er", "s") as $suffix) {
-            if (Helper::endsWith($w, $suffix) === true) {
+            if (Helper::ends_with($w, $suffix) === true) {
                 $w = preg_replace('/'.$suffix.'$/u', '', $w);
                 break;
             }
         }
-        if (Helper::endsWith($w, "rr") === true || Helper::endsWith($w, "rv") === true || Helper::endsWith($w, "nz") === true) {
+        if (Helper::ends_with($w, "rr") === true || Helper::ends_with($w, "rv") === true || Helper::ends_with($w, "nz") === true) {
             return mb_ucfirst($w."e");
         }
         return mb_ucfirst($w);
     }
+    
+    /**
+     * Check if given noun is singular
+     *
+     * @param string $noun
+     * @return boolean
+     */
+    public static function is_singular($noun)
+    {
+        if (self::singularize($noun) === $noun) return true;
+        return false;
+    
+    }
+    
+    /**
+     * Check if given noun is plural
+     *
+     * @param string $noun
+     * @return boolean
+     */
+    public static function is_plural($noun)
+    {
+        if (self::pluralize(self::singularize($noun)) === $noun) return true;
+        return false;
+    
+    }
+    
 }
