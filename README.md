@@ -13,7 +13,7 @@ echo GermanNumerus::pluralize("Kopf");
 ### Generate singular for german word
 echo  GermanNumerus::singularize("Bodenverunreinigungen");
 
-###Accuracy
+### Accuracy
 ca. 72% for pluralize()
 ca. 84% for singularize()
 
